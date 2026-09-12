@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <TextView
+    android:id="@+id/txt_lista"
+    android:layout_width="match_parent"
+    android:layout_height="30dp"
+    android:layout_marginTop="0dp"
+    android:text="Mapa"
+    android:textSize="20dp"
+    android:background="@color/nigga"
+    android:textAlignment="center"
+
+    />
+    <org.osmdroid.views.MapView
+        android:layout_height="match_parent"
+        android:layout_width="match_parent"
+        android:layout_marginTop="30dp"
+        android:id="@+id/mapVista"
+        />
+
+</FrameLayout>

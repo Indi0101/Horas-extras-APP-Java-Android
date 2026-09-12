@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/nigga"
+    tools:context=".Mostrar_info">
+
+ <FrameLayout
+     android:layout_width="match_parent"
+     android:layout_height="803dp"
+     android:layout_marginStart="0dp"
+     android:layout_marginTop="20dp"
+     android:layout_marginEnd="0dp">
+
+
+  <TextView
+      android:id="@+id/hora_mos_info"
+      android:layout_width="150dp"
+      android:layout_height="30dp"
+      android:layout_marginHorizontal="230dp"
+      android:layout_marginVertical="4dp"
+      android:textAlignment="center"
+      android:textColor="@color/color_card_view"
+      android:textSize="16sp" />
+
+  <TextView
+      android:id="@+id/fecha_mos_info"
+      android:layout_width="150dp"
+      android:layout_height="30dp"
+      android:layout_marginHorizontal="10dp"
+      android:layout_marginVertical="4dp"
+      android:textAlignment="center"
+      android:textColor="@color/color_card_view"
+      android:textSize="16sp" />
+
+  <TextView
+      android:layout_width="match_parent"
+      android:layout_height="20dp"
+      android:layout_marginHorizontal="10dp"
+      android:layout_marginVertical="45dp"
+      android:text="Agencia:"
+      android:textColor="@color/color_card_view" />
+
+  <TextView
+      android:id="@+id/agencia_mos_info"
+      android:layout_width="match_parent"
+      android:layout_height="30dp"
+      android:layout_marginHorizontal="10dp"
+      android:layout_marginVertical="70dp"
+      android:text="TextView"
+      android:textColor="@color/color_card_view" />
+
+
+  <org.osmdroid.views.MapView
+      android:id="@+id/mapa_mos_info"
+      android:layout_width="match_parent"
+      android:layout_height="180dp"
+      android:layout_marginVertical="110dp"></org.osmdroid.views.MapView>
+
+  <TextView
+      android:id="@+id/direccion_mos_info"
+      android:layout_width="match_parent"
+      android:layout_height="50dp"
+      android:layout_marginHorizontal="10dp"
+      android:layout_marginVertical="300dp"
+      android:text="TextView"
+      android:textColor="@color/color_card_view" />
+
+  <TextView
+      android:id="@+id/txt4_mos_info"
+      android:layout_width="match_parent"
+      android:layout_height="23dp"
+      android:layout_marginHorizontal="10dp"
+      android:layout_marginVertical="370dp"
+      android:text="Descripcion:"
+      android:textColor="@color/color_card_view"
+      android:textSize="16sp" />
+
+
+  <TextView
+      android:id="@+id/descriccion_mos_info"
+      android:layout_width="match_parent"
+      android:layout_height="60dp"
+      android:layout_marginHorizontal="10dp"
+      android:layout_marginVertical="395dp"
+      android:background="@color/nigga_l"
+      android:text="TextView"
+      android:textColor="@color/color_card_view" />
+
+  <TextView
+      android:id="@+id/txt5_mos_info"
+      android:layout_width="match_parent"
+      android:layout_height="23dp"
+      android:layout_marginHorizontal="10dp"
+      android:layout_marginVertical="470dp"
+      android:text="Problema:"
+      android:textColor="@color/color_card_view"
+      android:textSize="16sp" />
+
+  <TextView
+      android:id="@+id/problema_mos_info"
+      android:layout_width="match_parent"
+      android:layout_height="40dp"
+      android:layout_marginHorizontal="10dp"
+      android:layout_marginVertical="490dp"
+      android:background="@color/nigga_l"
+      android:text="TextView"
+      android:textColor="@color/color_card_view" />
+
+  <Button
+      android:id="@+id/acectar_mos_info"
+      android:layout_width="match_parent"
+      android:layout_height="40dp"
+      android:layout_centerHorizontal="true"
+      android:layout_marginHorizontal="10dp"
+      android:layout_marginVertical="580dp"
+      android:text="Aceptar"
+      android:textColor="@color/rojo_infa" />
+
+  <Button
+      android:id="@+id/btn_finalizar_mos"
+      android:layout_width="match_parent"
+      android:layout_height="40dp"
+      android:layout_marginHorizontal="10dp"
+      android:layout_marginVertical="625dp"
+      android:text="Finalizar"
+      android:textColor="@color/rojo_infa" />
+
+  <Button
+      android:id="@+id/atras_mos_info"
+      android:layout_width="match_parent"
+      android:layout_height="40dp"
+      android:layout_centerHorizontal="false"
+      android:layout_marginHorizontal="10dp"
+      android:layout_marginVertical="670dp"
+      android:text="Atras"
+      android:textColor="@color/rojo_infa" />
+
+ </FrameLayout>
+</RelativeLayout>

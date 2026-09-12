@@ -1,0 +1,84 @@
+# =========================
+# Android / Gradle
+# =========================
+.gradle/
+**/build/
+build/
+
+# Local SDK paths
+local.properties
+**/local.properties
+
+# Android Studio / IntelliJ
+.idea/
+*.iml
+
+# Native build
+.externalNativeBuild/
+.cxx/
+
+# Captures
+captures/
+
+# =========================
+# APK / App Bundle / releases
+# =========================
+*.apk
+*.aab
+**/release/
+**/output-metadata.json
+
+# =========================
+# Firebase / Google Services
+# =========================
+google-services.json
+**/google-services.json
+
+# =========================
+# Signing keys - NEVER COMMIT
+# =========================
+*.jks
+*.keystore
+*.key
+*.p12
+*.pem
+
+# Signing/local configuration
+keystore.properties
+signing.properties
+
+# =========================
+# Logs / temporary files
+# =========================
+*.log
+*.tmp
+*.temp
+*.swp
+
+# =========================
+# OS files
+# =========================
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Credentials / secrets
+.env
+.env.*
+*.properties.local
+secrets.properties
+
+# Signing
+*.jks
+*.keystore
+*.p12
+*.pem
+
+# Firebase
+google-services.json
+**/google-services.json
+
+# Generated releases
+*.apk
+*.aab
+**/release/

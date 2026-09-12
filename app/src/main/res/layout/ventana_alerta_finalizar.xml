@@ -1,0 +1,611 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:background="@color/nigga_l"
+    android:layout_height="wrap_content">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:focusableInTouchMode="true">
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:focusableInTouchMode="true"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="25dp"
+                android:background="@color/titulo_hoja_s"
+                android:text="Hoja de servicio"
+                android:textAlignment="center"
+                android:textColor="@color/rojo_infa"
+                android:textSize="16dp"
+                android:textStyle="bold"
+                tools:ignore="MissingConstraints" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="25dp"
+                android:text="Agencia:"
+                android:textSize="16dp" />
+
+            <EditText
+                android:id="@+id/direc_datos"
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:layout_marginLeft="75dp"
+                android:layout_marginTop="25dp"
+                android:textSize="15dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="90dp"
+                android:text="Peticion:"
+                android:textSize="16dp" />
+
+            <EditText
+                android:id="@+id/peticion_datos"
+                android:layout_width="70dp"
+                android:layout_height="45dp"
+                android:layout_marginLeft="65dp"
+                android:layout_marginTop="78dp"
+                android:textSize="15dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="200dp"
+                android:layout_marginTop="90dp"
+                android:text="Fecha:"
+                android:textSize="16dp" />
+
+            <EditText
+                android:id="@+id/fecha_ini_datos"
+                android:layout_width="150dp"
+                android:layout_height="45dp"
+                android:layout_marginLeft="250dp"
+                android:layout_marginTop="78dp"
+                android:inputType="date"
+                android:textSize="15dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="140dp"
+                android:id="@+id/h_ini_textview_dato"
+                android:text="Hora de inicio:"
+                android:textSize="16dp" />
+
+            <EditText
+                android:id="@+id/h_ini_datos"
+                android:layout_width="100dp"
+                android:layout_height="45dp"
+                android:layout_marginLeft="100dp"
+                android:layout_marginTop="130dp"
+                android:textSize="15dp"
+                android:inputType="time"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="205dp"
+                android:id="@+id/h_fin_textview_dato"
+                android:layout_marginTop="140dp"
+                android:text="Hora final:"
+                android:textSize="16dp" />
+
+            <EditText
+                android:id="@+id/h_fin_datos"
+                android:layout_width="114dp"
+                android:layout_height="45dp"
+                android:layout_marginLeft="277dp"
+                android:layout_marginTop="130dp"
+                android:textSize="15dp"
+                android:inputType="time"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="25dp"
+                android:layout_marginTop="190dp"
+                android:text="Problema Reportado"
+                android:textAlignment="center"
+                android:textColor="@color/rojo_infa"
+                android:textSize="16dp"
+                tools:ignore="MissingConstraints" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="223dp"
+                android:text="Titulo:"
+                android:id="@+id/titulo_textview_pro"
+                android:textSize="16dp" />
+
+            <EditText
+                android:id="@+id/tiulo_info_problema"
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:layout_marginLeft="45dp"
+                android:layout_marginTop="205dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="270dp"
+                android:text="Categorias:"
+                android:id="@+id/cate_textview_pro"
+                android:textSize="16dp" />
+
+            <AutoCompleteTextView
+                android:id="@+id/categorias_info_problema"
+                android:layout_width="325dp"
+                android:layout_height="45dp"
+                android:layout_marginLeft="85dp"
+                android:layout_marginTop="255dp"
+                android:textSize="16dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="310dp"
+                android:text="Comentario:"
+                android:id="@+id/comen_textview_pro"
+                android:textSize="16dp" />
+
+            <EditText
+                android:id="@+id/comen_info_problema"
+                android:layout_width="320dp"
+                android:layout_height="65dp"
+                android:layout_marginLeft="90dp"
+                android:layout_marginTop="310dp"
+                android:background="#423535"
+                android:gravity="top"
+                android:inputType="text|textMultiLine"
+                android:textSize="14dp" />
+            <TextView
+                android:layout_width="90dp"
+                android:layout_height="40dp"
+                android:layout_marginTop="380dp"
+                android:text="Trabajo realizado:"
+                android:id="@+id/trabajo_textview_pro"
+                android:textSize="16dp" />
+
+            <EditText
+                android:id="@+id/trabajo_info_problema"
+                android:layout_width="320dp"
+                android:layout_height="50dp"
+                android:layout_marginLeft="90dp"
+                android:layout_marginTop="378dp"
+                android:background="#423535"
+                android:gravity="top"
+                android:inputType="text|textMultiLine"
+                android:textSize="14dp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="25dp"
+                android:layout_marginTop="445dp"
+                android:text="Materiales"
+                android:textAlignment="center"
+                android:textColor="@color/rojo_infa"
+                android:textSize="16dp"
+                tools:ignore="MissingConstraints" />
+
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="460dp"
+                android:text="Materiales:" />
+
+            <EditText
+                android:id="@+id/mate_materiales"
+                android:layout_width="match_parent"
+                android:layout_height="150dp"
+                android:layout_marginTop="480dp"
+                android:background="#423535"
+                android:gravity="top"
+                android:inputType="text|textMultiLine"
+                android:textSize="14dp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="25dp"
+                android:layout_marginTop="635dp"
+                android:text="Datos de empleado"
+                android:textAlignment="center"
+                android:textColor="@color/rojo_infa"
+                android:textSize="16dp"
+                tools:ignore="MissingConstraints" />
+
+            <TextView
+                android:id="@+id/n_txt_emple_res"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="670dp"
+                android:text="Resposable:"
+                android:textSize="16dp" />
+
+            <AutoCompleteTextView
+                android:id="@+id/n_emple_res"
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:layout_marginLeft="88dp"
+                android:layout_marginTop="650dp"
+                android:textSize="16dp" />
+
+            <ImageView
+                android:id="@+id/img_error_1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="350dp"
+                android:layout_marginTop="660dp"
+                app:srcCompat="@drawable/error" />
+            <ImageView
+                android:id="@+id/img_r_1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="350dp"
+                android:layout_marginTop="660dp"
+                app:srcCompat="@drawable/error" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="720dp"
+                android:text="Conductor:"
+                android:textSize="16dp" />
+
+            <AutoCompleteTextView
+                android:id="@+id/n_emple_conductor"
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:layout_marginLeft="85dp"
+                android:layout_marginTop="700dp"
+                android:textSize="16dp" />
+
+            <ImageView
+                android:id="@+id/img_error_2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="350dp"
+                android:layout_marginTop="710dp"
+                app:srcCompat="@drawable/error" />
+            <ImageView
+                android:id="@+id/img_r_2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="350dp"
+                android:layout_marginTop="710dp"
+                app:srcCompat="@drawable/error" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="770dp"
+                android:text="Personal apollo:"
+                android:textSize="16dp" />
+
+            <AutoCompleteTextView
+                android:id="@+id/n_emple_apo1"
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:layout_marginLeft="115dp"
+                android:layout_marginTop="750dp"
+                android:textSize="16dp" />
+
+            <ImageView
+                android:id="@+id/img_error_3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="350dp"
+                android:layout_marginTop="760dp"
+                app:srcCompat="@drawable/error" />
+
+            <ImageView
+                android:id="@+id/img_r_3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="350dp"
+                android:layout_marginTop="760dp"
+                app:srcCompat="@drawable/error" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="820dp"
+                android:text="Personal apollo:"
+                android:textSize="16dp" />
+
+            <AutoCompleteTextView
+                android:id="@+id/n_emple_apo2"
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:layout_marginLeft="115dp"
+                android:layout_marginTop="800dp"
+                android:textSize="16dp" />
+
+            <ImageView
+                android:id="@+id/img_error_4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="350dp"
+                android:layout_marginTop="810dp"
+                app:srcCompat="@drawable/error" />
+            <ImageView
+                android:id="@+id/img_r_4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="350dp"
+                android:layout_marginTop="810dp"
+                app:srcCompat="@drawable/error" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="865dp"
+                android:text="Personal apollo:"
+                android:textSize="16dp" />
+
+            <AutoCompleteTextView
+                android:id="@+id/n_emple_apo3"
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:layout_marginLeft="115dp"
+                android:layout_marginTop="850dp"
+                android:textSize="16dp" />
+
+            <ImageView
+                android:id="@+id/img_error_5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="350dp"
+                android:layout_marginTop="860dp"
+                app:srcCompat="@drawable/error" />
+            <ImageView
+                android:id="@+id/img_r_5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="350dp"
+                android:layout_marginTop="860dp"
+                app:srcCompat="@drawable/error" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="25dp"
+                android:layout_marginTop="905dp"
+                android:text="Control de horas"
+                android:textAlignment="center"
+                android:textColor="@color/rojo_infa"
+                android:textSize="16dp"
+                tools:ignore="MissingConstraints" />
+
+            <EditText
+                android:id="@+id/h_salida_contol_h"
+                android:layout_width="280dp"
+                android:layout_height="45dp"
+                android:layout_marginLeft="122dp"
+                android:layout_marginTop="930dp"
+                android:ems="10"
+                android:inputType="time" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="950dp"
+                android:id="@+id/h_salida_textview_control_h"
+                android:text="Hora de salida:"
+                android:textSize="16dp" />
+
+            <EditText
+                android:id="@+id/h_retorno_control_h"
+                android:layout_width="280dp"
+                android:layout_height="45dp"
+                android:layout_marginLeft="122dp"
+                android:layout_marginTop="980dp"
+                android:ems="10"
+                android:inputType="time" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="995dp"
+                android:id="@+id/h_retorno_textview_control_h"
+                android:text="Hora de retorno:"
+                android:textSize="16dp" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="25dp"
+                android:layout_marginTop="1035dp"
+                android:text="Sector"
+                android:textAlignment="center"
+                android:textColor="@color/rojo_infa"
+                android:textSize="16dp"
+                tools:ignore="MissingConstraints" />
+            <RadioGroup
+                android:id="@+id/radios_grupo_sector"
+                android:layout_width="match_parent"
+                android:layout_height="115dp"
+                android:layout_marginTop="1060dp"
+                >
+
+                <RadioButton
+                    android:id="@+id/radio_sector_dentro_c"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:text="Dentro de la ciudad"
+                    tools:ignore="MissingConstraints"
+                    tools:layout_editor_absoluteX="0dp"
+                    tools:layout_editor_absoluteY="3dp" />
+
+                <RadioButton
+                    android:id="@+id/radio_sector_fuera_c"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:text="Fuera de la ciudad"
+                    tools:ignore="MissingConstraints" />
+
+            </RadioGroup>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="25dp"
+                android:layout_marginTop="1180dp"
+                android:text="Gastos"
+                android:textAlignment="center"
+                android:textColor="@color/rojo_infa"
+                android:textSize="16dp"
+                tools:ignore="MissingConstraints" />
+
+            <EditText
+                android:id="@+id/trans_gastos"
+                android:layout_width="200dp"
+                android:layout_height="45dp"
+                android:layout_marginLeft="100dp"
+                android:layout_marginTop="1200dp"
+                android:inputType="numberDecimal"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="1215dp"
+                android:text="Trasporte:"
+                android:textSize="16dp" />
+
+            <EditText
+                android:id="@+id/alimentacion_gastos"
+                android:layout_width="200dp"
+                android:layout_height="45dp"
+                android:layout_marginLeft="100dp"
+                android:layout_marginTop="1250dp"
+                android:inputType="numberDecimal"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="1265dp"
+                android:text="Alimentacion:"
+                android:textSize="16dp" />
+
+            <EditText
+                android:id="@+id/hospe_gastos"
+                android:layout_width="200dp"
+                android:layout_height="45dp"
+                android:layout_marginLeft="100dp"
+                android:layout_marginTop="1300dp"
+                android:inputType="numberDecimal"
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="1315dp"
+                android:text="Hospedaje:"
+                android:textSize="16dp" />
+
+            <EditText
+                android:id="@+id/total_gastos"
+                android:layout_width="200dp"
+                android:layout_height="45dp"
+                android:layout_marginLeft="100dp"
+                android:layout_marginTop="1350dp"
+                android:inputType="numberDecimal"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="1363dp"
+                android:text="Total gastos:"
+                android:textSize="16dp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="25dp"
+                android:layout_marginTop="1420dp"
+                android:text="Solucion de trabajo"
+                android:textAlignment="center"
+                android:textColor="@color/rojo_infa"
+                android:textSize="16dp"
+                tools:ignore="MissingConstraints" />
+
+            <RadioGroup
+                android:id="@+id/radios_grupo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <RadioButton
+                    android:id="@+id/radio_resu_comple"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="1440dp"
+                    android:text="Resuelto por completo"
+                    tools:ignore="MissingConstraints"
+                    tools:layout_editor_absoluteX="0dp"
+                    tools:layout_editor_absoluteY="3dp" />
+
+                <RadioButton
+                    android:id="@+id/radio_resu_parci"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:text="Resuelto parcialmente"
+                    tools:ignore="MissingConstraints" />
+
+                <RadioButton
+                    android:id="@+id/radio_trabajo_pendi"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:text="Queda trabajo pendiente"
+                    tools:ignore="MissingConstraints" />
+
+                <RadioButton
+                    android:id="@+id/radio_no_resul"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:text="No se resolvio"
+                    tools:ignore="MissingConstraints" />
+            </RadioGroup>
+            <Button
+                android:id="@+id/btn_sysaid_listo"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:textColor="@color/rojo_infa"
+                android:layout_marginTop="1650dp"
+                android:text="Listo"
+                android:textAlignment="center"
+                android:textSize="14dp" />
+            <Button
+                android:id="@+id/btn_sysaid_salir"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:textColor="@color/rojo_infa"
+                android:layout_marginTop="1690dp"
+                android:text="Atras"
+                android:textAlignment="center"
+                android:textSize="14dp" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="90dp"
+                android:textStyle="bold"
+                android:textAlignment="center"
+                android:textColor="@color/nigga"
+                android:text="Nota: Los campos en rojo son obligatorios"
+                android:layout_marginTop="1730dp"
+                android:textSize="16dp"
+                />
+        </FrameLayout>
+    </ScrollView>
+</LinearLayout>

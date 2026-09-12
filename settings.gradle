@@ -1,0 +1,3 @@
+include ':app'
+rootProject.name = "Proyecto_hora_extra"
+include ':openCVLibrary3411'
