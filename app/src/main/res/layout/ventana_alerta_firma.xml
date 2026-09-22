@@ -4,79 +4,81 @@
     xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
     android:windowSoftInputMode="adjustResize|stateHidden"
     android:layout_height="match_parent">
+
+
+    <TextView
+        android:id="@+id/txt_msj_firma"
+        android:layout_width="match_parent"
+        android:layout_height="20dp"
+        android:text=""
+        android:textAlignment="center"
+        android:textSize="12dp" />
+
     <LinearLayout
         android:id="@+id/signLayout"
         android:layout_width="match_parent"
-        android:layout_height="300dp"
+        android:layout_height="250dp"
         android:orientation="horizontal"
+        android:layout_marginTop="20dp"
         tools:ignore="MissingConstraints" />
+
     <Button
         android:id="@+id/limpiar_firma"
-        android:layout_width="115dp"
+        android:layout_width="match_parent"
         android:layout_height="40dp"
-        android:layout_marginLeft="5dp"
-        android:layout_marginTop="455dp"
+        android:layout_marginTop="410dp"
         android:textColor="@color/white"
         android:text="Limpiar"
         />
+
     <Button
         android:id="@+id/veri_firma"
-        android:layout_width="115dp"
+        android:layout_width="match_parent"
         android:layout_height="40dp"
-        android:layout_marginLeft="140dp"
-        android:layout_marginTop="455dp"
-        android:textColor="@color/rojo_infa"
+        android:layout_marginTop="450dp"
         android:text="Verificar firma"
-        />
+        android:textColor="@color/rojo_infa" />
+
     <Button
         android:id="@+id/salir_firma"
-        android:layout_width="100dp"
-        android:layout_height="40dp"
+        android:layout_width="match_parent"
+        android:layout_height="37dp"
+        android:layout_marginTop="490dp"
         android:text="Salir"
-        android:textColor="@color/white"
-        android:layout_marginTop="455dp"
-        android:layout_marginLeft="275dp"/>
-    <TextView
-        android:id="@+id/txt_msj_firma"
-        android:layout_width="260dp"
-        android:layout_height="40dp"
-        android:text=""
-        android:layout_marginLeft="150dp"
-        android:layout_marginTop="300dp"
-        android:textSize="15dp"
-        android:textAlignment="center"
-        />
+        android:textColor="@color/white" />
+
+
     <TextView
         android:id="@+id/msj_intentos_firma"
-        android:layout_width="150dp"
+        android:layout_width="match_parent"
         android:layout_height="30dp"
+        android:layout_marginTop="270dp"
         android:text=""
-        android:layout_marginTop="300dp"
-        android:textSize="15dp"
         android:textAlignment="center"
-        />
+        android:textSize="15dp" />
+
     <TextView
         android:id="@+id/msj_intentos_fallidas"
         android:layout_width="match_parent"
         android:layout_height="25dp"
+        android:layout_marginTop="300dp"
         android:text="Ingrese sus datos"
-        android:layout_marginTop="335dp"
-        android:textSize="15dp"
         android:textAlignment="center"
-        />
+        android:textSize="15dp" />
+
     <AutoCompleteTextView
         android:layout_width="match_parent"
         android:layout_height="45dp"
         android:hint="ingresar nombre"
         android:id="@+id/nom_user_firma"
-        android:layout_marginTop="360dp"
+        android:layout_marginTop="325dp"
         />
     <EditText
         android:layout_width="match_parent"
         android:layout_height="45dp"
         android:hint="ingresar contraseña"
         android:id="@+id/pass_user_firma"
-        android:layout_marginTop="405dp"
+        android:layout_marginTop="365dp"
         android:inputType="textPassword"
         />
 </FrameLayout>
