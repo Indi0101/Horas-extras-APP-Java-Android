@@ -82,3 +82,11 @@ google-services.json
 *.apk
 *.aab
 **/release/
+
+# Backend local config
+api-php/conexion.php
+api-php/.env
+
+# Real signatures
+api-php/firmas_img/*
+!api-php/firmas_img/.gitkeep
