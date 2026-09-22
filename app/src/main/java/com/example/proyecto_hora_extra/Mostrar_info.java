@@ -312,18 +312,18 @@ public class Mostrar_info extends AppCompatActivity {
         datos_finalizar_sysaid[0] = valores_datos2[0];
         datos_finalizar_sysaid[4] = valores_datos1[1];
         datos_finalizar_sysaid[8] = valores_datos1[5];
-        datos_finalizar_sysaid[12] = array_nombre_listos_sysaid[2];
+        datos_finalizar_sysaid[12] = valores_datos2[6];
         datos_finalizar_sysaid[1] = valores_datos2[1];
         datos_finalizar_sysaid[5] = valores_datos1[2];
         datos_finalizar_sysaid[9] = valores_datos2[3];
-        datos_finalizar_sysaid[13] = array_nombre_listos_sysaid[3];
+        datos_finalizar_sysaid[13] = valores_datos2[7];
         datos_finalizar_sysaid[2] = valores_datos2[2];
         datos_finalizar_sysaid[6] = valores_datos1[3];
-        datos_finalizar_sysaid[10] = array_nombre_listos_sysaid[0];
-        datos_finalizar_sysaid[14] = array_nombre_listos_sysaid[4];
+        datos_finalizar_sysaid[10] = valores_datos2[4];
+        datos_finalizar_sysaid[14] = valores_datos2[8];
         datos_finalizar_sysaid[3] = valores_datos1[0];
         datos_finalizar_sysaid[7] = valores_datos1[4];
-        datos_finalizar_sysaid[11] = array_nombre_listos_sysaid[1];
+        datos_finalizar_sysaid[11] = valores_datos2[5];
         datos_finalizar_sysaid[15] = valores_datos1[7];
 
         datos_finalizar_sysaid[16] = valores_datos1[8];
@@ -518,6 +518,8 @@ public class Mostrar_info extends AppCompatActivity {
     private void insertar_estado_peticion(String URL, String estado, String id_user) {
         final String str = id_user;
         final String str2 = estado;
+
+        Log.e("FINALIZAR_TAREA", "Responsable enviado: [" + datos_finalizar_sysaid[10] + "]");
         StringRequest stringRequest = new StringRequest(1, URL, new Response.Listener<String>() {
             public void onResponse(String response) {
                 Log.v("PANINI  modificar estado:", "Se MODIFICO CON EXITO");

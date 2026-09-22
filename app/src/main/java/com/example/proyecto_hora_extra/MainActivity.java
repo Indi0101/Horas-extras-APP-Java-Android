@@ -73,7 +73,9 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Log.e("TEST_LOG", "===== VERSION NUEVA EJECUTANDOSE =====");
         Log.e("PANINI PANINI", "EJEMPLOOOOOOOOOOOOOOOO");
+        Log.e("TEST_LOG", "MAIN ACTIVITY INICIADA");
         Context ctx = getApplicationContext();
 
         Configuration.getInstance().load(ctx, PreferenceManager.getDefaultSharedPreferences(ctx));
