@@ -1,0 +1,3 @@
+db.url=jdbc:mysql://localhost:3306/bd_control_horas_extra?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=America/Tegucigalpa
+db.user=root
+db.password=

@@ -1,0 +1,577 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Horas_extra_emple" language="groovy" pageWidth="1082" pageHeight="679" orientation="Landscape" columnWidth="1042" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="a302c36b-8685-40e3-8d6e-7d9ce4adaeab">
+	<property name="ireport.zoom" value="0.6830134553650712"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="table">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_TH" mode="Opaque" backcolor="#73B0E6">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_CH" mode="Opaque" backcolor="#CFDBE6">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 1">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 1_TH" mode="Opaque" backcolor="#B07B86">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 1_CH" mode="Opaque" backcolor="#E6CFD3">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 1_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 2">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 2_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 2_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 2_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 3">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 3_TH" mode="Opaque" backcolor="#FFBFBF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 3_CH" mode="Opaque" backcolor="#FFE6E6">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 3_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+		<conditionalStyle>
+			<conditionExpression><![CDATA[new Boolean($V{REPORT_COUNT}.intValue()%2==0)]]></conditionExpression>
+			<style backcolor="#FFF8F8"/>
+		</conditionalStyle>
+	</style>
+	<style name="table 4">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 4_TH" mode="Opaque" backcolor="#6495ED">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 4_CH" mode="Opaque" backcolor="#BFD6FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 4_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<subDataset name="hora_extra" uuid="511ab61c-52cb-4068-aea2-fd5a374569ab">
+		<queryString>
+			<![CDATA[SELECT * FROM temporal_horas_extra]]>
+		</queryString>
+		<field name="id_registro" class="java.lang.String">
+			<fieldDescription><![CDATA[]]></fieldDescription>
+		</field>
+		<field name="hora_inicio" class="java.lang.String">
+			<fieldDescription><![CDATA[]]></fieldDescription>
+		</field>
+		<field name="hora_final" class="java.lang.String">
+			<fieldDescription><![CDATA[]]></fieldDescription>
+		</field>
+		<field name="fecha_inicio" class="java.lang.String">
+			<fieldDescription><![CDATA[]]></fieldDescription>
+		</field>
+		<field name="fecha_final" class="java.lang.String">
+			<fieldDescription><![CDATA[]]></fieldDescription>
+		</field>
+		<field name="nombre_emple" class="java.lang.String">
+			<fieldDescription><![CDATA[]]></fieldDescription>
+		</field>
+		<field name="sysaid" class="java.lang.String">
+			<fieldDescription><![CDATA[]]></fieldDescription>
+		</field>
+		<field name="comentario" class="java.lang.String">
+			<fieldDescription><![CDATA[]]></fieldDescription>
+		</field>
+		<field name="fecha_ingreso" class="java.lang.String">
+			<fieldDescription><![CDATA[]]></fieldDescription>
+		</field>
+		<field name="hora_ingreso" class="java.lang.String">
+			<fieldDescription><![CDATA[]]></fieldDescription>
+		</field>
+		<field name="total_horas" class="java.lang.String">
+			<fieldDescription><![CDATA[]]></fieldDescription>
+		</field>
+		<field name="estado" class="java.lang.String">
+			<fieldDescription><![CDATA[]]></fieldDescription>
+		</field>
+		<field name="total_pago" class="java.lang.String">
+			<fieldDescription><![CDATA[]]></fieldDescription>
+		</field>
+	</subDataset>
+	<queryString>
+		<![CDATA[SELECT date_format(now(),'%r') as hora]]>
+	</queryString>
+	<field name="hora" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="16" splitType="Stretch">
+			<staticText>
+				<reportElement mode="Opaque" x="-20" y="-20" width="1082" height="32" forecolor="#3366FF" backcolor="#3399FF" uuid="64c3793d-961d-4b61-8b16-06523f980fcf"/>
+				<textElement verticalAlignment="Top">
+					<font fontName="Dialog" size="18" isBold="true"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="67" splitType="Stretch">
+			<image>
+				<reportElement x="0" y="0" width="46" height="46" uuid="41686b04-5cb1-481d-9e6b-789736a6b771"/>
+				<imageExpression><![CDATA["C:\\Users\\Celeste Zaldivar\\Pictures\\iconos\\infatlan_icono.png"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement x="0" y="46" width="165" height="20" uuid="09cdc71c-879f-46e0-89d7-7bd3bfb42e9b"/>
+				<textElement>
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Informatica atlantida]]></text>
+			</staticText>
+			<textField pattern="EEEEE dd MMMMM yyyy">
+				<reportElement x="902" y="0" width="140" height="20" uuid="718ae1ca-a5a0-45a0-ae96-41393f7ddadb"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="11" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="938" y="26" width="100" height="20" uuid="562e29e8-5509-43a3-ab5e-c58363e20b9b"/>
+				<textElement textAlignment="Center">
+					<font size="11" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{hora}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="24" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="650" height="22" uuid="e63b7b30-41a5-4501-8dd4-d75cbebe46f9"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="12"/>
+				</textElement>
+				<text><![CDATA[Registro de horas extras ]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="233" splitType="Stretch">
+			<elementGroup/>
+			<componentElement>
+				<reportElement key="table 4" style="table 4" x="0" y="0" width="1042" height="140" uuid="edc93521-55ef-4203-9f76-d02d7b60a618"/>
+				<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
+					<datasetRun subDataset="hora_extra" uuid="6634ad8e-39fa-461b-90be-5ad4cf27f22b">
+						<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+					</datasetRun>
+					<jr:column width="46" uuid="e21f059c-5e86-41fa-8cfc-bef0dcac86da">
+						<jr:columnHeader style="table 4_CH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement x="0" y="0" width="46" height="30" uuid="3560d36a-4b50-43d6-8643-cae53f346022"/>
+								<textElement textAlignment="Center">
+									<font size="11" isBold="true"/>
+								</textElement>
+								<text><![CDATA[Id registro]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:columnFooter style="table 4_CH" height="0" rowSpan="1"/>
+						<jr:detailCell style="table 4_TD" height="30" rowSpan="1">
+							<textField>
+								<reportElement x="0" y="0" width="46" height="20" uuid="54f102c3-5ba5-4bda-9cda-a64bf0b11ce1"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle"/>
+								<textFieldExpression><![CDATA[$F{id_registro}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="59" uuid="e55174e0-c5f0-42ce-8ca0-1294d0655fd1">
+						<jr:columnHeader style="table 4_CH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement mode="Transparent" x="0" y="0" width="59" height="18" forecolor="#000000" backcolor="#FFFFFF" uuid="b4e651e2-f425-48a0-a5ac-075b3773e558"/>
+								<textElement textAlignment="Center" verticalAlignment="Top" rotation="None" markup="none">
+									<font fontName="SansSerif" size="11" isBold="true" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+									<paragraph lineSpacing="Single"/>
+								</textElement>
+								<text><![CDATA[Hora inicio]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell style="table 4_TD" height="30" rowSpan="1">
+							<textField pattern="" isBlankWhenNull="false">
+								<reportElement mode="Transparent" x="0" y="0" width="59" height="20" forecolor="#000000" backcolor="#FFFFFF" uuid="e8691988-f28e-4c89-96cb-f80816d4a789"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle" rotation="None" markup="none">
+									<font fontName="SansSerif" size="10" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+									<paragraph lineSpacing="Single"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{hora_inicio}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="64" uuid="de26d516-f47d-4287-9d2d-97b4e7319474">
+						<jr:columnHeader style="table 4_CH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement mode="Transparent" x="0" y="0" width="64" height="18" forecolor="#000000" backcolor="#FFFFFF" uuid="a4f4974b-7d0c-436b-bce0-f6d3e4c392bd"/>
+								<textElement textAlignment="Center" verticalAlignment="Top" rotation="None" markup="none">
+									<font fontName="SansSerif" size="11" isBold="true" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+									<paragraph lineSpacing="Single"/>
+								</textElement>
+								<text><![CDATA[Hora final]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell style="table 4_TD" height="30" rowSpan="1">
+							<textField pattern="" isBlankWhenNull="false">
+								<reportElement mode="Transparent" x="0" y="0" width="64" height="20" forecolor="#000000" backcolor="#FFFFFF" uuid="c78814cb-ffcf-435c-b44d-e40740c5d11b"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle" rotation="None" markup="none">
+									<font fontName="SansSerif" size="10" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+									<paragraph lineSpacing="Single"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{hora_final}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="71" uuid="e8eba6be-90bf-4827-864d-9b1715344c51">
+						<jr:columnHeader style="table 4_CH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement mode="Transparent" x="0" y="0" width="71" height="18" forecolor="#000000" backcolor="#FFFFFF" uuid="60e80f59-fb3b-4be6-95c5-7c87554cb036"/>
+								<textElement textAlignment="Center" verticalAlignment="Top" rotation="None" markup="none">
+									<font fontName="SansSerif" size="11" isBold="true" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+									<paragraph lineSpacing="Single"/>
+								</textElement>
+								<text><![CDATA[Fecha inicio]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell style="table 4_TD" height="30" rowSpan="1">
+							<textField pattern="" isBlankWhenNull="false">
+								<reportElement mode="Transparent" x="0" y="0" width="71" height="20" forecolor="#000000" backcolor="#FFFFFF" uuid="87ed9c79-5b32-4387-8a0d-49976a9bdc52"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle" rotation="None" markup="none">
+									<font fontName="SansSerif" size="10" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+									<paragraph lineSpacing="Single"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{fecha_inicio}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="69" uuid="120d6bab-fbb2-4c7c-a067-3012c10e0ba8">
+						<jr:columnHeader style="table 4_CH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement mode="Transparent" x="0" y="0" width="69" height="18" forecolor="#000000" backcolor="#FFFFFF" uuid="c8ddbeed-fe9b-4505-aa6d-72554662653d"/>
+								<textElement textAlignment="Center" verticalAlignment="Top" rotation="None" markup="none">
+									<font fontName="SansSerif" size="11" isBold="true" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+									<paragraph lineSpacing="Single"/>
+								</textElement>
+								<text><![CDATA[Fecha final]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell style="table 4_TD" height="30" rowSpan="1">
+							<textField pattern="" isBlankWhenNull="false">
+								<reportElement mode="Transparent" x="0" y="0" width="69" height="20" forecolor="#000000" backcolor="#FFFFFF" uuid="47a9ed43-9ac0-47e8-9949-1fd4d74305e6"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle" rotation="None" markup="none">
+									<font fontName="SansSerif" size="10" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+									<paragraph lineSpacing="Single"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{fecha_final}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="112" uuid="58722d6b-d0b6-4df7-b605-904c82a623ac">
+						<jr:columnHeader style="table 4_CH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement mode="Transparent" x="0" y="0" width="112" height="18" forecolor="#000000" backcolor="#FFFFFF" uuid="0e637fd6-8994-4502-bb0d-9d45f9671f6c"/>
+								<textElement textAlignment="Center" verticalAlignment="Top" rotation="None" markup="none">
+									<font fontName="SansSerif" size="11" isBold="true" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+									<paragraph lineSpacing="Single"/>
+								</textElement>
+								<text><![CDATA[Nombre emple]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:columnFooter style="table 4_CH" height="0" rowSpan="1"/>
+						<jr:detailCell style="table 4_TD" height="30" rowSpan="1">
+							<textField pattern="" isBlankWhenNull="false">
+								<reportElement mode="Transparent" x="0" y="0" width="112" height="20" forecolor="#000000" backcolor="#FFFFFF" uuid="f51b7cdb-c337-4647-834a-bbd8059ef307"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle" rotation="None" markup="none">
+									<font fontName="SansSerif" size="10" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+									<paragraph lineSpacing="Single"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{nombre_emple}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="43" uuid="c7d55fa9-878f-4fdc-bac4-04e7dd947edf">
+						<jr:columnHeader style="table 4_CH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement mode="Transparent" x="0" y="0" width="43" height="30" forecolor="#000000" backcolor="#FFFFFF" uuid="c5518753-5690-466c-afac-57c0f0557faa"/>
+								<textElement textAlignment="Center" verticalAlignment="Top" rotation="None" markup="none">
+									<font fontName="SansSerif" size="11" isBold="true" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+									<paragraph lineSpacing="Single"/>
+								</textElement>
+								<text><![CDATA[SYSAID]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:columnFooter style="table 4_CH" height="0" rowSpan="1"/>
+						<jr:detailCell style="table 4_TD" height="30" rowSpan="1">
+							<textField>
+								<reportElement x="0" y="0" width="43" height="30" uuid="05e0bedf-a727-4a82-80f1-1c66813df7e7"/>
+								<textElement textAlignment="Center"/>
+								<textFieldExpression><![CDATA[$F{sysaid}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="213" uuid="b3c44725-80b0-44be-b26e-042b4135096b">
+						<jr:columnHeader style="table 4_CH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement mode="Transparent" x="0" y="0" width="213" height="18" forecolor="#000000" backcolor="#FFFFFF" uuid="1ccad1b6-6ec4-4378-b728-69ae2f8ec278"/>
+								<textElement textAlignment="Center" verticalAlignment="Top" rotation="None" markup="none">
+									<font fontName="SansSerif" size="11" isBold="true" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+									<paragraph lineSpacing="Single"/>
+								</textElement>
+								<text><![CDATA[Comentario]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:columnFooter style="table 4_CH" height="0" rowSpan="1"/>
+						<jr:detailCell style="table 4_TD" height="30" rowSpan="1">
+							<textField pattern="" isBlankWhenNull="false">
+								<reportElement mode="Transparent" x="0" y="0" width="213" height="30" forecolor="#000000" backcolor="#FFFFFF" uuid="ba77befc-f0b9-499b-b7be-83b1179b6eff"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle" rotation="None" markup="none">
+									<font fontName="SansSerif" size="10" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+									<paragraph lineSpacing="Single"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{comentario}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="80" uuid="73e214ff-7110-421d-bcab-935968c99964">
+						<jr:columnHeader style="table 4_CH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement mode="Transparent" x="0" y="0" width="79" height="18" forecolor="#000000" backcolor="#FFFFFF" uuid="fd825f41-2457-4ecf-ad2a-d2b0ebb08457"/>
+								<textElement textAlignment="Center" verticalAlignment="Top" rotation="None" markup="none">
+									<font fontName="SansSerif" size="11" isBold="true" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+									<paragraph lineSpacing="Single"/>
+								</textElement>
+								<text><![CDATA[Fecha ingreso]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:columnFooter style="table 4_CH" height="0" rowSpan="1"/>
+						<jr:detailCell style="table 4_TD" height="30" rowSpan="1">
+							<textField pattern="" isBlankWhenNull="false">
+								<reportElement mode="Transparent" x="0" y="0" width="79" height="20" forecolor="#000000" backcolor="#FFFFFF" uuid="9bef23ac-8ef5-4ac8-84fe-c7909ac64045"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle" rotation="None" markup="none">
+									<font fontName="SansSerif" size="10" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+									<paragraph lineSpacing="Single"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{fecha_ingreso}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="75" uuid="02b6084a-4ca0-4157-862f-cefd7d89d848">
+						<jr:columnHeader style="table 4_CH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement mode="Transparent" x="0" y="0" width="73" height="30" forecolor="#000000" backcolor="#FFFFFF" uuid="0390cad0-f454-4a3e-8b04-f01efde6ba52"/>
+								<textElement textAlignment="Center" verticalAlignment="Top" rotation="None" markup="none">
+									<font fontName="SansSerif" size="11" isBold="true" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+									<paragraph lineSpacing="Single"/>
+								</textElement>
+								<text><![CDATA[Hora ingreso]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:columnFooter style="table 4_CH" height="0" rowSpan="1"/>
+						<jr:detailCell style="table 4_TD" height="30" rowSpan="1">
+							<textField pattern="" isBlankWhenNull="false">
+								<reportElement mode="Transparent" x="0" y="0" width="73" height="20" forecolor="#000000" backcolor="#FFFFFF" uuid="3db11ac9-622e-4d73-a8cf-ea1f492d5c04"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle" rotation="None" markup="none">
+									<font fontName="SansSerif" size="10" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+									<paragraph lineSpacing="Single"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{hora_ingreso}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="61" uuid="fec2f17e-30b6-429e-92dd-71de29a8e0ee">
+						<jr:columnHeader style="table 4_CH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement mode="Transparent" x="0" y="0" width="61" height="18" forecolor="#000000" backcolor="#FFFFFF" uuid="6787a5e2-678f-45b3-82a5-a6ac965bd252"/>
+								<textElement textAlignment="Center" verticalAlignment="Top" rotation="None" markup="none">
+									<font fontName="SansSerif" size="11" isBold="true" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+									<paragraph lineSpacing="Single"/>
+								</textElement>
+								<text><![CDATA[Total horas]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:columnFooter style="table 4_CH" height="0" rowSpan="1"/>
+						<jr:detailCell style="table 4_TD" height="30" rowSpan="1">
+							<textField pattern="" isBlankWhenNull="false">
+								<reportElement mode="Transparent" x="0" y="0" width="61" height="20" forecolor="#000000" backcolor="#FFFFFF" uuid="be790db7-416d-4286-8eab-551d0f9fe42b"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle" rotation="None" markup="none">
+									<font fontName="SansSerif" size="10" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+									<paragraph lineSpacing="Single"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{total_horas}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="54" uuid="13f1cc8e-0c26-4cb9-9c74-ed2294c57520">
+						<jr:columnHeader style="table 4_CH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement mode="Transparent" x="0" y="0" width="53" height="18" forecolor="#000000" backcolor="#FFFFFF" uuid="f711d46d-e39e-45bf-bda3-6dcca2a10442"/>
+								<textElement textAlignment="Center" verticalAlignment="Top" rotation="None" markup="none">
+									<font fontName="SansSerif" size="11" isBold="true" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+									<paragraph lineSpacing="Single"/>
+								</textElement>
+								<text><![CDATA[Estado]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:columnFooter style="table 4_CH" height="0" rowSpan="1"/>
+						<jr:detailCell style="table 4_TD" height="30" rowSpan="1">
+							<textField pattern="" isBlankWhenNull="false">
+								<reportElement mode="Transparent" x="0" y="0" width="53" height="20" forecolor="#000000" backcolor="#FFFFFF" uuid="9828ea6f-c4d4-4d32-b717-5a8b8f561185"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle" rotation="None" markup="none">
+									<font fontName="SansSerif" size="10" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+									<paragraph lineSpacing="Single"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{estado}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="62" uuid="1bdf3a00-ed06-4117-96a2-33ac26560311">
+						<jr:columnHeader style="table 4_CH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement mode="Transparent" x="0" y="0" width="61" height="18" forecolor="#000000" backcolor="#FFFFFF" uuid="f4ceed94-7f16-4eea-ad6a-5caa43620f09"/>
+								<textElement textAlignment="Center" verticalAlignment="Top" rotation="None" markup="none">
+									<font fontName="SansSerif" size="11" isBold="true" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+									<paragraph lineSpacing="Single"/>
+								</textElement>
+								<text><![CDATA[Total pago]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:columnFooter style="table 4_CH" height="0" rowSpan="1"/>
+						<jr:detailCell style="table 4_TD" height="30" rowSpan="1">
+							<textField pattern="" isBlankWhenNull="false">
+								<reportElement mode="Transparent" x="0" y="0" width="61" height="20" forecolor="#000000" backcolor="#FFFFFF" uuid="8e18ea19-3971-4638-a863-60e14689e860"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle" rotation="None" markup="none">
+									<font fontName="SansSerif" size="10" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+									<paragraph lineSpacing="Single"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{total_pago}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+				</jr:table>
+			</componentElement>
+		</band>
+	</detail>
+	<columnFooter>
+		<band splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="130" splitType="Stretch">
+			<staticText>
+				<reportElement x="2" y="106" width="96" height="20" uuid="4807d5d6-d8de-474d-9c96-1f8ced87c139"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Tegucigalpa]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="369" y="106" width="140" height="20" uuid="6e94e536-b120-4478-9fe5-9fe5168db71d"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[San pedro sula]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="851" y="106" width="87" height="20" uuid="262a271e-2f72-44d1-a8c4-a2be72a585bc"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[La Ceiba]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="938" y="107" width="104" height="20" uuid="419ae591-0fee-4ba9-981a-133c52a2f9c5"/>
+				<textElement verticalAlignment="Middle">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[2280-0000 Ext. 6362]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="483" y="107" width="140" height="20" uuid="d1473a9a-360d-429b-882c-65d3fb63f179"/>
+				<textElement verticalAlignment="Middle">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[2580-0097]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="85" y="107" width="140" height="20" uuid="65fcc16d-be83-4593-9ac8-154e510501c3"/>
+				<textElement verticalAlignment="Middle">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[2280-0000 Ext 6360]]></text>
+			</staticText>
+			<line>
+				<reportElement x="-40" y="106" width="1102" height="1" uuid="91d1d4c8-0169-492d-aa21-e2a154be6028"/>
+			</line>
+			<textField>
+				<reportElement x="462" y="53" width="80" height="20" uuid="00db3318-ce1c-4150-9b6e-0289f35de796"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement x="542" y="53" width="40" height="20" uuid="5270ea26-b1e6-4cdf-9261-d99e78334a2a"/>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band height="20" splitType="Stretch"/>
+	</summary>
+</jasperReport>

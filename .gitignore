@@ -90,3 +90,16 @@ api-php/.env
 # Real signatures
 api-php/firmas_img/*
 !api-php/firmas_img/.gitkeep
+# IntelliJ / compilados
+.idea/
+*.iml
+out/
+**/out/
+
+# Configuración privada de base de datos
+db.properties
+**/db.properties
+
+# Sí conservar ejemplos
+!db.properties.example
+!**/db.properties.example
