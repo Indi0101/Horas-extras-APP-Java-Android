@@ -1,405 +1,597 @@
 # Sistema de Control de Horas Extra y Gestión de Tareas
 
-Aplicación Android desarrollada como parte de un sistema para el **control de horas extra, asignación de tareas, seguimiento de trabajos y finalización de servicios**.
+Sistema desarrollado para administrar el registro de **horas extra**, la **asignación y seguimiento de tareas de servicio**, el **control de entrada y salida de empleados** y la generación de información para el área administrativa.
 
-La aplicación permite que los empleados consulten tareas, registren su entrada y salida, visualicen ubicaciones mediante mapas, completen hojas de servicio y autoricen la finalización de trabajos mediante firma o credenciales de un responsable.
+El proyecto está compuesto por **tres aplicaciones principales**, una API desarrollada en PHP y una base de datos MySQL/MariaDB compartida.
 
 ---
 
-## 📋 Descripción
+## 📌 Descripción general
 
-La aplicación móvil forma parte de una solución diseñada para centralizar la gestión de tareas, trabajos de campo y horas extraordinarias del personal.
+El sistema permite integrar diferentes procesos relacionados con la operación de personal y trabajos técnicos:
 
-El sistema utiliza una arquitectura cliente-servidor:
+- Registro de horas extra trabajadas.
+- Asignación y seguimiento de tareas.
+- Control de entrada y salida de empleados.
+- Gestión de empleados, agencias y puestos.
+- Elaboración de hojas de servicio.
+- Registro de responsables, conductores y personal de apoyo.
+- Autorización de trabajos mediante firma.
+- Autorización alternativa mediante credenciales.
+- Consulta de ubicaciones mediante mapas.
+- Gestión administrativa de solicitudes.
+- Consulta y generación de reportes.
+- Visualización de tareas finalizadas.
+- Consulta de horas extra aprobadas.
+
+---
+
+# 🏗️ Arquitectura del sistema
+
+El proyecto está dividido en los siguientes componentes:
 
 ```text
-┌───────────────────────────┐
-│      Aplicación Android   │
-│                           │
-│  • Tareas                 │
-│  • Perfil                 │
-│  • Ubicación              │
-│  • Hoja de servicio       │
-│  • Firma / autenticación  │
-└─────────────┬─────────────┘
-              │ HTTP
-              ▼
-┌───────────────────────────┐
-│          API PHP          │
-└─────────────┬─────────────┘
-              │
-              ▼
-┌───────────────────────────┐
-│          MySQL            │
-│ bd_control_horas_extra    │
-└───────────────────────────┘
-```
-
-La aplicación Android se comunica con una API desarrollada en PHP, encargada de consultar y actualizar la información almacenada en una base de datos MySQL/MariaDB.
-
----
-
-# ✨ Funcionalidades principales
-
-## 🔐 Autenticación
-
-La aplicación permite identificar al empleado mediante sus credenciales.
-
-También utiliza autenticación biométrica en operaciones relacionadas con el control de asistencia.
-
----
-
-## 🕐 Registro de entrada y salida
-
-La aplicación permite registrar información relacionada con la jornada del empleado:
-
-- Fecha de entrada.
-- Hora de entrada.
-- Fecha de salida.
-- Hora de salida.
-- Identificador del empleado.
-- Coordenadas de ubicación.
-
-El registro de salida puede ser validado mediante autenticación biométrica.
-
----
-
-## 📋 Gestión de tareas
-
-Los empleados pueden consultar las peticiones disponibles y visualizar información relacionada con cada trabajo.
-
-Entre los datos disponibles se encuentran:
-
-- Agencia.
-- Dirección.
-- Tipo de problema.
-- Descripción.
-- Fecha.
-- Hora.
-- Estado de la tarea.
-
-Las tareas pueden pasar por diferentes estados durante su ciclo de atención.
-
-```text
-Disponible
-    │
-    ▼
-En proceso
-    │
-    ▼
-Finalizada
+                        ┌──────────────────────────┐
+                        │     MySQL / MariaDB      │
+                        │ bd_control_horas_extra   │
+                        └────────────┬─────────────┘
+                                     │
+                    ┌────────────────┼─────────────────┐
+                    │                │                 │
+                    │                │                 │
+           ┌────────▼────────┐ ┌─────▼──────────┐ ┌────▼───────────┐
+           │ Java Admin      │ │ Java Empleado │ │    PHP API     │
+           │ Desktop         │ │ Desktop       │ └──────┬─────────┘
+           └─────────────────┘ └───────────────┘        │
+                                                        │
+                                                 ┌──────▼───────┐
+                                                 │ Android App  │
+                                                 │ Java         │
+                                                 └──────────────┘
 ```
 
 ---
 
-## 👨‍🔧 Asignación de tareas
-
-Cuando un empleado acepta una tarea, el sistema registra al empleado encargado de atenderla.
-
-Esto permite mantener la trazabilidad del trabajo desde su asignación hasta su finalización.
-
----
-
-# 📝 Hoja de servicio
-
-Al finalizar un trabajo, el empleado puede completar una **Hoja de Servicio** con la información correspondiente a la actividad realizada.
-
-La Hoja de Servicio puede incluir:
-
-- Agencia.
-- Número de petición.
-- Fecha.
-- Hora de inicio.
-- Hora de finalización.
-- Título del trabajo.
-- Categoría.
-- Descripción.
-- Trabajo realizado.
-- Materiales utilizados.
-- Empleado responsable.
-- Conductor.
-- Personal de apoyo.
-- Hora de salida.
-- Hora de retorno.
-- Sector.
-- Gastos de transporte.
-- Alimentación.
-- Hospedaje.
-- Total de gastos.
-- Resultado del trabajo.
-- Responsable que autoriza el servicio.
-
-Cada Hoja de Servicio queda relacionada con la petición correspondiente.
-
----
-
-## ✅ Resultado del trabajo
-
-El sistema permite registrar diferentes resultados para una tarea.
-
-Entre ellos se encuentra la finalización completa del trabajo y otros estados que permiten continuar posteriormente con la atención de la petición.
-
-Cuando el trabajo se resuelve completamente, la petición puede pasar al estado:
+# 📂 Estructura del repositorio
 
 ```text
-Finalizada
-```
-
----
-
-# ✍️ Autorización mediante firma
-
-La finalización de una Hoja de Servicio puede ser autorizada mediante la firma de un responsable.
-
-La aplicación utiliza **OpenCV** para realizar procesamiento de imágenes y comparar la firma realizada en el dispositivo con una firma previamente registrada.
-
-El flujo de autorización contempla varios intentos de reconocimiento.
-
-```text
-Firma del responsable
-        │
-        ▼
-Comparación con firma registrada
-        │
-        ├── Firma reconocida
-        │        │
-        │        ▼
-        │     Autorizar
-        │
-        └── Intentos agotados
-                 │
-                 ▼
-        Usuario + contraseña
-                 │
-                 ▼
-              Autorizar
-```
-
-Si la firma no puede ser reconocida después de los intentos permitidos, el responsable puede autorizar la operación mediante sus credenciales.
-
----
-
-# 🗺️ Mapa
-
-La aplicación integra mapas utilizando:
-
-- OpenStreetMap
-- osmdroid
-
-El mapa permite visualizar diferentes ubicaciones relacionadas con la operación.
-
-Entre ellas:
-
-- Ubicación del empleado.
-- Ubicación de personal registrado.
-- Agencias registradas.
-- Ubicación específica de la agencia relacionada con una tarea.
-
-El detalle de una tarea también puede mostrar directamente en el mapa la ubicación de la agencia donde debe realizarse el trabajo.
-
----
-
-# 👤 Perfil del empleado
-
-La sección de perfil permite consultar información relacionada con el usuario.
-
-Entre la información disponible se encuentra:
-
-- Nombre del empleado.
-- Hora de entrada.
-- Tareas finalizadas.
-- Horas extra aprobadas.
-- Registro de salida.
-
-Desde esta sección también puede realizarse el registro de salida mediante autenticación biométrica.
-
----
-
-# 🛠️ Tecnologías utilizadas
-
-## Android
-
-- Java
-- Android SDK
-- AndroidX
-- XML
-- Gradle
-- RecyclerView
-- Volley
-- SharedPreferences
-- BiometricPrompt
-
----
-
-## 🗺️ Mapas
-
-- OpenStreetMap
-- osmdroid
-
----
-
-## 👁️ Procesamiento de imágenes
-
-- OpenCV 3.4.11
-
-OpenCV es utilizado en el proceso de análisis y comparación de firmas.
-
----
-
-## 🌐 Backend
-
-El backend utilizado por la aplicación está desarrollado con:
-
-- PHP
-- Apache
-- XAMPP
-
-La API PHP funciona como intermediario entre la aplicación Android y la base de datos.
-
----
-
-## 🗄️ Base de datos
-
-El sistema utiliza:
-
-- MySQL
-- MariaDB
-
-La base de datos principal utilizada por el proyecto es:
-
-```text
-bd_control_horas_extra
-```
-
----
-
-# 🔥 Firebase
-
-El proyecto dispone de configuración para servicios de Google/Firebase mediante:
-
-```text
-google-services.json
-```
-
-Por razones de configuración y seguridad, este archivo no se incluye en el repositorio.
-
-Cada entorno debe utilizar su propia configuración de Firebase.
-
----
-
-# 📁 Estructura del proyecto
-
-```text
-Proyecto_hora_extra/
+Horas-extras-APP-Java-Android/
 │
-├── app/
-│   │
-│   ├── src/
-│   │   ├── main/
-│   │   │
-│   │   ├── java/
-│   │   │   └── com/example/proyecto_hora_extra/
-│   │   │
-│   │   │       ├── MainActivity.java
-│   │   │       ├── Marcar_hora_entrada.java
-│   │   │       ├── Mostrar_info.java
-│   │   │       │
-│   │   │       ├── config/
-│   │   │       │   └── ApiConfig.java
-│   │   │       │
-│   │   │       ├── fragmentos/
-│   │   │       │   ├── Frag_lista_tareas.java
-│   │   │       │   ├── Frag_mapa.java
-│   │   │       │   └── Frag_perfil.java
-│   │   │       │
-│   │   │       ├── clases/
-│   │   │       │
-│   │   │       └── firma_clase/
-│   │   │           └── CaptureBitmapView.java
-│   │   │
-│   │   ├── res/
-│   │   │   ├── drawable/
-│   │   │   ├── layout/
-│   │   │   ├── values/
-│   │   │   └── xml/
-│   │   │
-│   │   └── AndroidManifest.xml
-│   │
+├── android-app-control-hoja-de-trabajo/
+│   ├── app/
+│   ├── openCVLibrary3411/
+│   ├── gradle/
 │   ├── build.gradle
-│   └── proguard-rules.pro
+│   ├── settings.gradle
+│   ├── gradlew
+│   └── gradlew.bat
 │
-├── openCVLibrary3411/
+├── java-admin-control-horas-extras-desktop/
+│   ├── src/
+│   ├── lib/
+│   ├── nbproject/
+│   ├── build.xml
+│   └── manifest.mf
 │
-├── gradle/
-│   └── wrapper/
+├── java-empleado-control-horas-extras-desktop/
+│   ├── src/
+│   ├── lib/
+│   ├── nbproject/
+│   └── build.xml
 │
-├── build.gradle
-├── gradle.properties
-├── settings.gradle
-├── gradlew
-├── gradlew.bat
+├── api-php/
+│   ├── finalizar_tarea.php
+│   ├── validar_gerente.php
+│   └── ...
+│
+├── database/
+│   └── schema.sql
+│
+├── docs/
+│   └── screenshots/
+│
+├── Librerias/
+│
 ├── .gitignore
 └── README.md
 ```
 
 ---
 
-# ⚙️ Requisitos de desarrollo
+# 📱 1. Aplicación Android
 
-El proyecto utiliza el siguiente entorno base:
+La aplicación móvil está orientada al personal encargado de recibir y ejecutar tareas de servicio.
 
-| Tecnología | Versión |
-|---|---|
-| Java | 8 |
-| Gradle | 6.5 |
-| Android Gradle Plugin | 4.1.1 |
-| compileSdk | 30 |
-| targetSdk | 30 |
-| OpenCV | 3.4.11 |
+Está desarrollada principalmente en **Java para Android**.
 
-Para trabajar con el proyecto se recomienda utilizar **Android Studio** con un JDK 8 compatible.
+## Funciones principales
 
----
+### 🔐 Inicio de sesión
 
-# 🚀 Instalación y configuración
+Permite el acceso de empleados registrados en el sistema.
 
-## 1. Clonar el repositorio
-
-```bash
-git clone <URL-DEL-REPOSITORIO>
-```
-
-Después de clonar el repositorio, abrir la carpeta del proyecto desde Android Studio.
+El sistema utiliza la información almacenada en la base de datos para validar el usuario.
 
 ---
 
-## 2. Configurar Java
+### 📋 Gestión de tareas
 
-El proyecto utiliza Java 8.
+Los empleados pueden visualizar las tareas disponibles y asignadas.
 
-En Android Studio configurar el JDK desde:
+Cada tarea puede contener información como:
+
+- Agencia.
+- Problema reportado.
+- Descripción.
+- Fecha.
+- Hora.
+- Dirección.
+- Estado de la tarea.
+- Ubicación.
+
+El empleado puede aceptar una tarea para comenzar su ejecución.
+
+---
+
+### 📍 Geolocalización
+
+La aplicación utiliza mapas para mostrar:
+
+- Agencias.
+- Ubicaciones relacionadas con las tareas.
+- Ubicación de empleados.
+- Referencias geográficas necesarias para realizar el trabajo.
+
+Para la visualización de mapas se utiliza:
+
+- OpenStreetMap.
+- osmdroid.
+
+---
+
+### 🕒 Control de entrada y salida
+
+El sistema permite registrar eventos de entrada y salida del empleado.
+
+Los registros pueden almacenar información asociada con:
+
+- Fecha.
+- Hora.
+- Empleado.
+- Ubicación geográfica.
+
+---
+
+### 📝 Hoja de servicio
+
+Después de realizar una tarea, el empleado puede completar una hoja de servicio.
+
+Entre los datos registrados se encuentran:
+
+- Agencia.
+- Número de petición.
+- Fecha.
+- Hora de inicio.
+- Hora de finalización.
+- Título del problema.
+- Categoría.
+- Comentarios.
+- Trabajo realizado.
+- Materiales utilizados.
+- Responsable.
+- Conductor.
+- Personal de apoyo.
+- Hora de salida.
+- Hora de retorno.
+- Sector.
+- Transporte.
+- Alimentación.
+- Hospedaje.
+- Total de gastos.
+- Resultado o solución del trabajo.
+- Gerente o supervisor que autoriza.
+
+Los empleados de apoyo son opcionales.
+
+---
+
+### ✍️ Autorización mediante firma
+
+La aplicación permite que un gerente o supervisor autorice la finalización de un trabajo mediante firma.
+
+Para el procesamiento y comparación de firmas se utiliza:
 
 ```text
-Settings
-→ Build, Execution, Deployment
-→ Build Tools
-→ Gradle
-→ Gradle JDK
+OpenCV 3.4.11
 ```
 
-Seleccionar una instalación compatible con Java 8.
+Como mecanismo alternativo, también existe autorización mediante:
+
+```text
+Usuario + Contraseña
+```
 
 ---
 
-# 🌐 Configuración de la API
+### 👤 Perfil del empleado
 
-La dirección principal del servidor se administra desde:
+Desde el perfil se puede consultar información relacionada con el empleado, incluyendo:
+
+- Nombre.
+- Hora de entrada.
+- Tareas finalizadas.
+- Horas extra aprobadas.
+- Registro de salida.
+
+---
+
+# 💻 2. Aplicación administrativa Java
+
+La aplicación administrativa está orientada a la gestión y supervisión del sistema.
+
+Está desarrollada como una aplicación de escritorio en **Java**.
+
+El proyecto mantiene estructura compatible con proyectos tradicionales de **NetBeans**.
+
+## Funciones principales
+
+La aplicación administrativa permite gestionar diferentes elementos del sistema.
+
+### 👥 Empleados
+
+Permite administrar información relacionada con los empleados.
+
+Entre las operaciones disponibles se encuentran:
+
+- Registro de empleados.
+- Consulta de empleados.
+- Información de puestos.
+- Información departamental.
+- Gestión de usuarios.
+
+---
+
+### 🏢 Agencias
+
+Permite registrar y consultar agencias utilizadas dentro del sistema.
+
+La información de las agencias puede ser utilizada posteriormente por la aplicación móvil para localizar los lugares donde deben realizarse los trabajos.
+
+---
+
+### 📋 Peticiones
+
+Permite crear y consultar peticiones o tareas de trabajo.
+
+Estas peticiones posteriormente pueden ser visualizadas desde la aplicación Android.
+
+---
+
+### 🛠️ Categorías de problemas
+
+Permite administrar las categorías utilizadas para clasificar problemas o solicitudes de servicio.
+
+---
+
+### 🧑‍💼 Puestos de trabajo
+
+Permite administrar información relacionada con puestos y departamentos.
+
+---
+
+### ⏱️ Horas extra
+
+La aplicación permite consultar y administrar registros relacionados con las horas extra ingresadas por los empleados.
+
+---
+
+### 📊 Reportes
+
+El sistema administrativo incluye generación y visualización de reportes.
+
+Se utilizan tecnologías como:
 
 ```text
-app/src/main/java/com/example/proyecto_hora_extra/config/ApiConfig.java
+JasperReports
+iText
 ```
 
-La clase centraliza las rutas utilizadas para comunicarse con los servicios PHP.
+Entre los reportes disponibles se encuentran información relacionada con:
+
+- Horas extra.
+- Entrada y salida.
+- Peticiones.
+- Hojas de servicio.
+- Información de empleados.
+
+---
+
+# 🕒 3. Aplicación Java para empleados
+
+Esta aplicación de escritorio está destinada al registro de las horas extra trabajadas por los empleados.
+
+Está desarrollada en Java y utiliza la misma base de datos del sistema.
+
+## Funciones principales
+
+### 🔐 Inicio de sesión
+
+El empleado debe identificarse antes de acceder al sistema.
+
+---
+
+### ➕ Registro de horas extra
+
+Permite registrar información relacionada con el trabajo realizado fuera de la jornada ordinaria.
+
+Entre los datos manejados se encuentran:
+
+- Empleado.
+- Petición o trabajo relacionado.
+- Comentario.
+- Fecha de inicio.
+- Fecha de finalización.
+- Hora de inicio.
+- Hora de finalización.
+- Total de horas extra.
+
+---
+
+### 📋 Consulta de registros
+
+Los empleados pueden consultar registros previamente ingresados.
+
+---
+
+### ✏️ Modificación
+
+El sistema permite modificar registros de horas extra cuando corresponde.
+
+---
+
+# 🌐 4. API PHP
+
+La aplicación Android se comunica con la base de datos mediante una API desarrollada en PHP.
+
+La API recibe solicitudes desde Android y realiza las operaciones correspondientes en MySQL/MariaDB.
+
+```text
+Android
+   │
+   │ HTTP
+   ▼
+PHP API
+   │
+   │ SQL
+   ▼
+MySQL / MariaDB
+```
+
+Entre las operaciones realizadas por la API se encuentran:
+
+- Consulta de tareas.
+- Consulta de empleados.
+- Consulta de agencias.
+- Registro de entrada y salida.
+- Actualización del estado de tareas.
+- Validación de gerentes.
+- Registro de hojas de servicio.
+- Finalización de tareas.
+- Consulta de tareas finalizadas.
+- Consulta de horas extra.
+
+---
+
+# 🗄️ 5. Base de datos
+
+El sistema utiliza una base de datos compartida denominada:
+
+```sql
+bd_control_horas_extra
+```
+
+La base de datos puede ejecutarse utilizando:
+
+```text
+MySQL
+MariaDB
+```
+
+Entre las tablas principales se encuentran:
+
+```text
+agencias
+categorias_problema
+departamento_trabajo
+empleado
+hoja_de_servicio
+ingreso_hora_extra
+marcar_de_entrada_salida
+peticiones
+peticiones_finalizadas
+problema
+puesto_departamento
+temporal_horas_extra
+temporal_marca
+temporal_peti
+temporal_sysaid
+```
+
+La carpeta:
+
+```text
+database/
+```
+
+contiene la estructura necesaria para crear la base de datos.
+
+---
+
+# 🛠️ Tecnologías utilizadas
+
+## Aplicación Android
+
+```text
+Java
+Android SDK
+AndroidX
+Volley
+OpenCV 3.4.11
+osmdroid
+OpenStreetMap
+Biometric Authentication
+RecyclerView
+Glide
+Gradle
+```
+
+---
+
+## Aplicaciones de escritorio
+
+```text
+Java
+Java Swing
+JDBC
+NetBeans
+JasperReports
+iText
+MySQL Connector/J
+JCalendar
+```
+
+---
+
+## Backend
+
+```text
+PHP
+Apache
+XAMPP
+JSON
+HTTP
+```
+
+---
+
+## Base de datos
+
+```text
+MySQL
+MariaDB
+phpMyAdmin
+```
+
+---
+
+# ⚙️ Requisitos
+
+## Android
+
+Para abrir el proyecto Android se recomienda:
+
+```text
+Android Studio
+Java 8
+Gradle 6.5
+Android Gradle Plugin 4.1.1
+Android SDK 30
+```
+
+El proyecto Android se encuentra en:
+
+```text
+android-app-control-hoja-de-trabajo/
+```
+
+---
+
+## Aplicaciones Java de escritorio
+
+Para los proyectos Java se puede utilizar un IDE compatible con proyectos Java tradicionales, por ejemplo:
+
+```text
+NetBeans
+IntelliJ IDEA
+```
+
+Los proyectos contienen sus fuentes dentro de:
+
+```text
+src/
+```
+
+y las librerías utilizadas dentro de:
+
+```text
+lib/
+```
+
+---
+
+## Backend PHP
+
+Se requiere un servidor con:
+
+```text
+Apache
+PHP
+MySQL / MariaDB
+```
+
+Para desarrollo local puede utilizarse:
+
+```text
+XAMPP
+```
+
+---
+
+# 🔧 Configuración de la base de datos en Java
+
+Por seguridad, las credenciales reales de la base de datos no están almacenadas en el repositorio.
+
+Cada aplicación Java contiene un archivo:
+
+```text
+db.properties.example
+```
+
+Debe copiarse como:
+
+```text
+db.properties
+```
+
+y configurarse localmente.
+
+Ejemplo:
+
+```properties
+db.url=jdbc:mysql://localhost:3306/bd_control_horas_extra
+db.user=TU_USUARIO
+db.password=TU_PASSWORD
+```
+
+El archivo:
+
+```text
+db.properties
+```
+
+está excluido mediante `.gitignore`.
+
+---
+
+# 🔧 Configuración de la API Android
+
+La aplicación Android utiliza una clase de configuración para definir la dirección del servidor.
+
+Archivo:
+
+```text
+config/ApiConfig.java
+```
 
 Ejemplo:
 
@@ -407,7 +599,7 @@ Ejemplo:
 public class ApiConfig {
 
     public static final String BASE_URL =
-            "http://SERVIDOR/conexion_hora_extra/";
+            "http://TU_SERVIDOR/conexion_hora_extra/";
 
     public static String endpoint(String archivoPhp) {
         return BASE_URL + archivoPhp;
@@ -415,253 +607,165 @@ public class ApiConfig {
 }
 ```
 
-La dirección debe modificarse según el servidor donde se encuentre instalada la API.
+Durante desarrollo local, `TU_SERVIDOR` debe sustituirse por la dirección correspondiente al servidor donde se está ejecutando Apache/PHP.
 
 ---
 
-# 🖥️ Configuración del backend
+# 🔐 Seguridad
 
-El backend requiere un servidor con:
+El repositorio excluye archivos locales y credenciales sensibles mediante `.gitignore`.
 
-- Apache
-- PHP
-- MySQL o MariaDB
-
-Durante el desarrollo puede utilizarse **XAMPP**.
-
-La estructura puede instalarse dentro del directorio:
+Entre los archivos que no deben almacenarse públicamente se encuentran:
 
 ```text
-xampp/htdocs/conexion_hora_extra/
-```
-
-La aplicación Android y el servidor deben encontrarse en una red que permita comunicación entre ambos dispositivos.
-
----
-
-# 🔥 Configuración de Firebase
-
-Si se utilizan los servicios de Firebase, debe agregarse el archivo:
-
-```text
-google-services.json
-```
-
-dentro de:
-
-```text
-app/google-services.json
-```
-
-Este archivo se encuentra excluido mediante `.gitignore`.
-
----
-
-# 📱 Ejecutar la aplicación
-
-Conectar un dispositivo Android mediante USB o utilizar un emulador.
-
-Desde Android Studio ejecutar:
-
-```text
-Run 'app'
-```
-
-La aplicación será compilada e instalada en el dispositivo seleccionado.
-
----
-
-# 🗄️ Estructura de datos
-
-La aplicación trabaja principalmente con información almacenada en tablas relacionadas con:
-
-- Empleados.
-- Agencias.
-- Peticiones.
-- Hojas de servicio.
-- Registros de entrada y salida.
-- Horas extra.
-- Categorías de problemas.
-- Problemas.
-- Puestos.
-- Departamentos de trabajo.
-
-Entre las principales tablas se encuentran:
-
-```text
-empleado
-agencias
-peticiones
-hoja_de_servicio
-marcar_de_entrada_salida
-ingreso_hora_extra
-categorias_problema
-problema
-puesto_departamento
-departamento_trabajo
-```
-
----
-
-## Peticiones
-
-La tabla de peticiones permite mantener información relacionada con:
-
-- Creación de tareas.
-- Empleado asignado.
-- Agencia.
-- Problema.
-- Estado.
-- Fecha.
-- Hora.
-- Fecha de finalización.
-- Hora de finalización.
-
----
-
-## Hoja de servicio
-
-La tabla `hoja_de_servicio` almacena la información generada durante la atención de una tarea.
-
-Permite mantener el registro del trabajo realizado y relacionarlo con la petición correspondiente.
-
----
-
-# 🔄 Flujo principal de la aplicación
-
-```text
-Inicio de sesión
-      │
-      ▼
-Registro de entrada
-      │
-      ▼
-Tareas pendientes
-      │
-      ▼
-Seleccionar tarea
-      │
-      ▼
-Detalle de tarea
-      │
-      ▼
-Aceptar tarea
-      │
-      ▼
-Trabajo en proceso
-      │
-      ▼
-Hoja de servicio
-      │
-      ▼
-Registrar trabajo realizado
-      │
-      ▼
-Resultado del trabajo
-      │
-      ▼
-Autorización del responsable
-      │
-      ├── Firma
-      │
-      └── Usuario y contraseña
-      │
-      ▼
-Tarea finalizada
-      │
-      ▼
-Historial en perfil
-      │
-      ▼
-Registro de salida
-```
-
----
-
-# 🔐 Seguridad del repositorio
-
-Los archivos correspondientes al entorno local, compilaciones y configuraciones privadas están excluidos del repositorio mediante `.gitignore`.
-
-Entre ellos:
-
-```text
-.idea/
-.gradle/
-build/
+db.properties
 local.properties
 google-services.json
-*.apk
-*.aab
-*.jks
-*.keystore
+archivos .jks
+archivos .keystore
+configuraciones privadas del IDE
+firmas reales
+contraseñas reales
 ```
 
-Esto permite mantener separado el código fuente de las configuraciones propias de cada computadora o entorno de ejecución.
+Los archivos `.example` contienen únicamente estructuras de configuración y deben completarse localmente.
+
+---
+
+
+# 🔄 Flujo general del sistema
+
+```text
+1. El administrador registra empleados, agencias y datos operativos.
+
+                         ↓
+
+2. Se crean peticiones o tareas de servicio.
+
+                         ↓
+
+3. El empleado visualiza las tareas desde Android.
+
+                         ↓
+
+4. El empleado acepta una tarea.
+
+                         ↓
+
+5. Se realiza el trabajo asignado.
+
+                         ↓
+
+6. Se completa la hoja de servicio.
+
+                         ↓
+
+7. El gerente o supervisor autoriza el trabajo.
+
+                         ↓
+
+8. La tarea se registra como finalizada.
+
+                         ↓
+
+9. El empleado puede registrar las horas extra trabajadas.
+
+                         ↓
+
+10. El área administrativa consulta y procesa la información.
+```
+
+---
+
+# 📊 Flujo de una tarea Android
+
+```text
+Disponible
+    │
+    ▼
+Aceptar tarea
+    │
+    ▼
+En proceso
+    │
+    ▼
+Realizar trabajo
+    │
+    ▼
+Hoja de servicio
+    │
+    ▼
+Autorización
+   ┌┴──────────────┐
+   │               │
+ Firma        Credenciales
+   │               │
+   └───────┬───────┘
+           ▼
+       Finalizada
+```
+
+---
+
+# 🧩 Integración entre componentes
+
+Las tres aplicaciones trabajan sobre la misma información.
+
+```text
+┌─────────────────────────────────────────────┐
+│          SISTEMA DE HORAS EXTRA             │
+├─────────────────────────────────────────────┤
+│                                             │
+│  📱 Android                                 │
+│     Gestión de tareas y hojas de servicio   │
+│                                             │
+│  💻 Java Admin                              │
+│     Administración y supervisión            │
+│                                             │
+│  🕒 Java Empleado                           │
+│     Registro de horas extra                 │
+│                                             │
+│  🌐 PHP API                                 │
+│     Comunicación Android ↔ Base de datos    │
+│                                             │
+│  🗄️ MySQL / MariaDB                         │
+│     Persistencia de información             │
+│                                             │
+└─────────────────────────────────────────────┘
+```
 
 ---
 
 # 🎓 Origen del proyecto
 
-Este proyecto fue desarrollado originalmente como trabajo académico de graduación orientado a la digitalización del:
+Este sistema fue desarrollado originalmente como proyecto académico de graduación.
 
-**Control e ingreso de horas extras y finalización de tareas.**
+Su objetivo es integrar diferentes procesos relacionados con:
 
-La solución completa integra diferentes componentes:
+- Gestión de tareas.
+- Control de personal.
+- Registro de horas extra.
+- Control de entrada y salida.
+- Hojas de servicio.
+- Autorización de trabajos.
+- Administración y generación de reportes.
 
-```text
-Sistema de Control de Horas Extra
-│
-├── Aplicación de escritorio para empleados
-│
-├── Aplicación administrativa de escritorio
-│
-├── Aplicación móvil Android
-│
-├── API PHP
-│
-└── Base de datos MySQL
-```
-
-Todos los componentes trabajan sobre una arquitectura compartida para centralizar la información relacionada con empleados, tareas y horas extraordinarias.
-
-Este repositorio corresponde específicamente al **componente Android del sistema**.
+Posteriormente el proyecto fue reorganizado y actualizado para conservar su estructura, mejorar su configuración y documentar sus diferentes componentes dentro de un único repositorio.
 
 ---
 
-# 📸 Capturas de pantalla
+# 📚 Componentes principales
 
-Las capturas de la aplicación pueden almacenarse dentro de una carpeta:
-
-```text
-docs/
-```
-
-Ejemplo de estructura:
-
-```text
-docs/
-├── login.png
-├── tareas.png
-├── detalle-tarea.png
-├── mapa.png
-├── hoja-servicio.png
-├── firma.png
-└── perfil.png
-```
-
-Posteriormente pueden mostrarse en este README utilizando:
-
-```markdown
-![Inicio de sesión](docs/login.png)
-
-![Tareas pendientes](docs/tareas.png)
-
-![Mapa](docs/mapa.png)
-
-![Hoja de servicio](docs/hoja-servicio.png)
-
-![Perfil](docs/perfil.png)
-```
+| Componente | Tecnología | Función |
+|---|---|---|
+| Android App | Java / Android | Gestión móvil de tareas y hojas de servicio |
+| Admin Desktop | Java Swing | Administración y supervisión |
+| Empleado Desktop | Java Swing | Registro de horas extra |
+| API | PHP | Comunicación entre Android y base de datos |
+| Base de datos | MySQL / MariaDB | Persistencia de información |
+| Mapas | OpenStreetMap / osmdroid | Geolocalización |
+| Firmas | OpenCV | Procesamiento de firma |
+| Reportes | JasperReports | Generación de reportes |
 
 ---
 
@@ -669,10 +773,22 @@ Posteriormente pueden mostrarse en este README utilizando:
 
 **Indira Zaldivar**
 
-Desarrollo de software y aplicación móvil Android.
+Proyecto académico y de portafolio orientado al desarrollo de aplicaciones Java, Android, PHP y bases de datos relacionales.
 
 ---
 
-## 📌 Proyecto académico
+# 📄 Notas
 
-Sistema orientado a la gestión de tareas, control de horas extraordinarias, registro de servicios y seguimiento del personal mediante aplicaciones de escritorio y dispositivos móviles.
+Las configuraciones de conexión, credenciales y datos sensibles deben definirse localmente y no forman parte del repositorio público.
+
+Para ejecutar el sistema completo es necesario configurar correctamente:
+
+```text
+1. MySQL / MariaDB
+2. API PHP
+3. Aplicación Android
+4. Aplicación Java administrativa
+5. Aplicación Java de empleados
+```
+
+Cada componente utiliza la misma estructura general de datos para mantener integrada la información del sistema.
